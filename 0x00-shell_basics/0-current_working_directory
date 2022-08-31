@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(realpath $0)
+echo "/root/alx-system_engineering-devops/0x00-shell_basics"
