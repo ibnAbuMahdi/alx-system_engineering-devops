@@ -1,2 +1,2 @@
 #!/bin/bash
-tr  t n|sort|uniq
+tr ' \t' '\n'|sort|uniq -u
