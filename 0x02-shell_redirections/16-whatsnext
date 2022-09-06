@@ -1,0 +1,2 @@
+#!/bin/bash
+egrep -eA 3 "*root*" /etc/passwd
