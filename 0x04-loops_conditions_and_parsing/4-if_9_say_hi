@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# prints using while loop
+
+a=0
+while [ $a -lt 10 ]
+do 
+	if [ $a -eq 8 ]
+	then
+		echo "Hi"
+	else
+		echo "Best School";
+	fi
+	: $((a = a + 1))
+done
