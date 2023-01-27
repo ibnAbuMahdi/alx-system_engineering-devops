@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# script that prints Best School ten times
+n="l l l l l l l l l l"
+for i in $n
+	do echo "Best Schoo$i"
+       	done
