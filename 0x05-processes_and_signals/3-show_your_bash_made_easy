@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# show your bash pid #
+
+for prc in /proc/*/cmdline;
+do
+#	{(cat "$prc" {echo "$prc" | egrep -o +[0-9]}}
+	(cat "$prc")
+done

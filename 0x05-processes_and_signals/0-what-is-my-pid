@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# what is my pid #
+
+for i in $(ps | head -n 2 | tail -1);
+do
+	echo "$i"
+	break
+done
+

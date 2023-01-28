@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# what is my pid #
+# shellcheck disable=SC2009
+	  
+ps aufx | 
+while read -r p
+do
+	for i in $p;
+	do
+		if [[ $i == *bash* ]]
+		then
+			echo "$p"
+			break
+		fi
+	done
+done
+
