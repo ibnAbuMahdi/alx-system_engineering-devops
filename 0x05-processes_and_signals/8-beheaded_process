@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# beheaded process #
+
+
+for prc in /proc/*/cmdline;
+do
+	d=$(tr -d '\0' <"$prc")
+	if  [[ $d == *7-highlander* ]] 
+	then
+		kill -9 "$(echo "$prc" | cut -d '/' -f 3)"
+		
+	fi
+done

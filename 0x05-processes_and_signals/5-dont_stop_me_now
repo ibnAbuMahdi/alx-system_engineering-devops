@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# dont stop me now #
+
+
+for prc in /proc/*/cmdline;
+do
+	d=$(tr -d '\0' <"$prc")
+	if  [[ $d == *4-to_infinity_and_beyond* ]] 
+	then
+		kill "$(echo "$prc" | cut -d '/' -f 3)"
+		
+	fi
+done

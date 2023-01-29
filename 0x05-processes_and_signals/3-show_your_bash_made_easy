@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 # show your bash pid #
 
+
 for prc in /proc/*/cmdline;
 do
-#	{(cat "$prc" {echo "$prc" | egrep -o +[0-9]}}
-	(cat "$prc")
+	d=$(tr -d '\0' <"$prc")
+	if  [[ $d == *bash* ]] 
+	then
+		{ echo "$(echo "$prc" | cut -d '/' -f 3) bash"; } 
+	fi
 done

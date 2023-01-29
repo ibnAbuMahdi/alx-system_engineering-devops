@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# highlander stop me if you can #
+
+
+for prc in /proc/*/cmdline;
+do
+	d=$(tr -d '\0' <"$prc")
+	if  [[ $d == *7-highlander* ]] 
+	then
+		pkill -f "7-highlander" 
+		
+	fi
+done

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# stop me if you can #
+
+
+for prc in /proc/*/cmdline;
+do
+	d=$(tr -d '\0' <"$prc")
+	if  [[ $d == *4-to_infinity_and_beyond* ]] 
+	then
+		pkill -f "4-to_infinity_and_beyond"
+	fi
+done
