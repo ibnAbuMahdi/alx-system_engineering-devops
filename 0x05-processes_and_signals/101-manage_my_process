@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# 101 manage my process #
+
+cp manage_my_process /etc/init.d/
+
+start(){
+	/etc/init.d/manage_my_process start &
+	pd=$(pgrep -f manage_my_process)
+	echo "$pd" > /var/run/my_process.pid    
+	echo "manage_my_process started"
+}
+
+stop(){
+	/etc/init.d/./manage_my_process stop &
+	if [ -e '/var/run/my_process.pid' ]
+	then
+		rm /var/run/my_process.pid
+	fi
+	echo "manage_my_process stopped"
+
+}
+
+restart(){
+	/etc/init.d/./manage_my_process stop &
+	if [ -e '/var/run/my_process.pid' ]
+	then
+		rm /var/run/my_process.pid
+	fi
+	/etc/init.d/./manage_my_process start &
+	pd=$(pgrep -f manage_my_process)
+	echo "$pd" > /var/run/my_process.pid    
+	echo "manage_my_process restarted"
+}
+
+if [[ $1 == "start" ]]
+then
+	start
+elif [[ $1 == "stop" ]]
+then
+	stop
+elif [[ $1 == "restart" ]]
+then
+	restart
+else
+	echo "Usage: manage_my_process {start|stop|restart}"
+fi

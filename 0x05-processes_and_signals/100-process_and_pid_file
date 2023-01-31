@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# process and pid file #
+
+pd=$(pgrep -f 100-process_and_pid_file)
+echo "$pd" > /var/run/myscript.pid
+
+while true
+do
+	echo "To infinity and beyond"
+	if [ -e "/var/run/myscript.pid" ]
+	then
+		trap 'echo "I hate the kill command"; rm /var/run/myscript.pid; exit' SIGTERM
+	fi
+	trap 'echo "Y U no love me?!"' SIGINT
+	if [ -e "/var/run/myscript.pid" ]
+	then
+		trap 'rm /var/run/myscript.pid; exit' SIGQUIT 
+	fi
+	sleep 2
+done
