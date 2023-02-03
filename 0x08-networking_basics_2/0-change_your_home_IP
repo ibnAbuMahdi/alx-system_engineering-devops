@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# change your home IP #
+
+if [ -e "temp" ]
+then
+	rm temp
+fi
+while read -r line
+do
+	if [[ "$line" != *localhost ]] && [[ "$line" != *facebook.com ]]
+	then
+		echo "$line">>temp		
+	fi
+done</etc/hosts
+echo "127.0.0.2	localhost">>temp
+echo "8.8.8.8 	facebook.com">>temp
+
+cat temp>/etc/hosts 
+

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# show attached IPs #
+
+temp=$(ip -4 addr)
+for line in $temp
+do
+	if [[ "$line" == *inet* ]]
+	then
+		(echo "$line" | cut -d " " -f 2)
+	fi
+done
