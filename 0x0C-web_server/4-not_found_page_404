@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#redirects to atenda.ng
+
+sudo touch /usr/share/nginx/html/custom_404.html
+sudo chmod a+wrx /usr/share/nginx/html/custom_404.html
+echo "Ceci n'est pas une page">/usr/share/nginx/html/custom_404.html
+
+sudo chmod a+wrx /etc/nginx/sites-available/ &&\
+
+new="root \/var\/www\/html;\n\t error_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\t\t root \/usr\/share\/nginx\/html;\n\t\tinternal;\n\t}"
+
+sed -i "s/root \/var\/www\/html;/$new/" /etc/nginx/sites-available/default
+sudo service nginx restart

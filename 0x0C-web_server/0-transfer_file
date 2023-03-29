@@ -5,7 +5,11 @@ IFS='/'
 if [ $# -lt 3 ];
 then
 	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+elif [ $# -gt 3 ]
+then
+	read -a -r file <<< "$1"
+	scp  -i "$4" -o "StrictHostKeyChecking=no" "$1" "$3@$2:~/${file[-1]}"
 else
-	read -a path <<< "$1"
-	scp -i $4 $3@localhost:$1 $2:"~/${path[-1]}"
+	read -a -r file <<< "$1"
+	scp -o "StrictHostKeyChecking=no" "$1" "$3@$2:~/${file[-1]}"
 fi
