@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 #redirects to www.google.com
 
+sudo service nginx start
 sudo chmod a+wrx /etc/nginx/sites-available/ &&\
 sudo chmod a+wrx /etc/nginx/sites-available/default
 sudo chmod a+wrx /etc/nginx/sites-enabled/default
 new="server_name _;\n\t location \/redirect_me {\n\treturn 301 https\:\/\/www.google.com;\n\t}"
 
-sed -i "s/server_name _;/$new/" /etc/nginx/sites-available/default
+sed -i "s/server_name _;/$new/" /etc/nginx/sites-enabled/default
 sudo service nginx reload
