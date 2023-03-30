@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 #redirects to atenda.ng
 
+sudo apt-get -y update
+sudo apt-get -y install nginx && sudo ufw allow 'Nginx HTTP'
+sudo service nginx start
+sudo chown -R "$USER":"$USER" /usr/share/nginx/html
 sudo touch /usr/share/nginx/html/custom_404.html
 sudo chmod a+wrx /usr/share/nginx/html/custom_404.html
 echo "Ceci n'est pas une page">/usr/share/nginx/html/custom_404.html
