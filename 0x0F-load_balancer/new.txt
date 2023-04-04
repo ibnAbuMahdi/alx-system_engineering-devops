@@ -1,0 +1,14 @@
+a new line
+second line
+different line
+another line
+second line
+different line
+first
+second line
+different line
+to end
+$init
+"$init"
+$init
+${init}

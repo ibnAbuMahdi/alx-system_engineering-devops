@@ -8,8 +8,8 @@ sudo service nginx start
 sudo chown -R "$USER":"$USER" /etc/nginx/sites-available
 sudo chmod a+wr /etc/nginx/sites-available/default
 sudo chmod a+wr /etc/nginx/sites-available/
-name=$(sudo hostname)
-new="add_header X-Served-By "$name"; try_files \$uri \$uri\/ =404;"
+name="$(sudo hostname)"
+new="add_header X-Served-By $name; try_files \$uri \$uri\/ =404;"
 
 sed -i "s/try_files \$uri \$uri\/ =404;/$new/" /etc/nginx/sites-available/default
 
