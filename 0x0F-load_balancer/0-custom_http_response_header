@@ -5,6 +5,7 @@ sudo apt-get -y update
 sudo apt-get -y install nginx && sudo ufw allow 'Nginx HTTP'
 sudo service nginx start
 
+sudo chown -R "$USER":"$USER" /etc/nginx/sites-available
 sudo chmod a+wr /etc/nginx/sites-available/default
 sudo chmod a+wr /etc/nginx/sites-available/
 name=$(sudo hostname)
