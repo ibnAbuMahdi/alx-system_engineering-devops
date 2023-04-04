@@ -13,5 +13,5 @@ sed -i "s/try_files \$uri \$uri\/ =404;/$new/" /etc/nginx/sites-available/defaul
 
 new2="#\t\tadd_header X-Served-By "$name";\n#\t\ttry_files \$uri \$uri\/ =404;"
 
-sed -i "s/#\t\tadd_header X-Served-By "$name";/$new/" /etc/nginx/sites-available/default
+sed -i "s/#\t\tadd_header X-Served-By "$name";/$new2/" /etc/nginx/sites-available/default
 sudo service nginx restart
