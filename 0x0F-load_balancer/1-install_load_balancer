@@ -2,7 +2,9 @@
 #configure load balancer
 
 sudo apt-get -y update
-sudo apt-get -y install haproxy
+sudo apt-get -y install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.0
+sudo apt-get -y install haproxy=2.0.\*
 
 sudo chmod a+wr /etc/default/haproxy
 sudo chmod a+wr /etc/default/
