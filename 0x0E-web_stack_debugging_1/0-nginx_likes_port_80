@@ -3,6 +3,7 @@
 
 chmod a+w /etc/nginx/sites-enabled/ &&\
 chmod a+w /etc/nginx/sites-enabled/default
+chmod a+w /etc/nginx/sites-available/
 new="80"
 
 sed -i "s/8080/$new/" /etc/nginx/sites-enabled/default
@@ -10,4 +11,5 @@ sed -i "s/8080/$new/" /etc/nginx/sites-enabled/default
 new1=""
 
 sed -i "s/ipv6only=on/$new1/" /etc/nginx/sites-enabled/default
+sed -i "s/ipv6only=on/$new1/" /etc/nginx/sites-available/default
 service nginx reload
