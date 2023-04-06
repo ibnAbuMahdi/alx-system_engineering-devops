@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#make nginx listen on post 80
+
+chmod a+w /etc/nginx/sites-available/ &&\
+chmod a+w /etc/nginx/sites-available/default
+new="80"
+
+sed -i "s/8080/$new/" /etc/nginx/sites-available/default
+service nginx reload
