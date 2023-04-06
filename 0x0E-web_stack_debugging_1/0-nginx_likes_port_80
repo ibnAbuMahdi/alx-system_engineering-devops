@@ -12,4 +12,4 @@ new1=""
 
 sed -i "s/ipv6only=on/$new1/" /etc/nginx/sites-enabled/default
 sed -i "s/ipv6only=on/$new1/" /etc/nginx/sites-available/default
-service nginx reload
+service nginx restart
