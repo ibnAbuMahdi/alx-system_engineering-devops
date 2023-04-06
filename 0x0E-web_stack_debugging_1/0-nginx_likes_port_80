@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 #make nginx listen on post 80
 
-chmod a+w /etc/nginx/sites-available/ &&\
-chmod a+w /etc/nginx/sites-available/default
+chmod a+w /etc/nginx/sites-enabled/ &&\
+chmod a+w /etc/nginx/sites-enabled/default
 new="80"
 
-sed -i "s/8080/$new/" /etc/nginx/sites-available/default
+sed -i "s/8080/$new/" /etc/nginx/sites-enabled/default
 
 new1=""
 
-sed -i "s/ipv6only=on/$new1/" /etc/nginx/sites-available/default
+sed -i "s/ipv6only=on/$new1/" /etc/nginx/sites-enabled/default
 service nginx reload
