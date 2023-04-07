@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#print details of domain and subdomains
+
+parse_domain(){
+	echo -n "The subdomain $1 is a "  && dig +noall +answer "$1.$2" ANY | awk '{ print $4 " record and points to " $5 }'
+}
+
+if [ -z $2 ]
+then
+	subs=("www" "lb-01" "web-01" "web-02")
+	for sub in "${subs[@]}"
+	do
+		parse_domain "$sub" $1
+	done
+else
+	parse_domain $2 $1
+fi
