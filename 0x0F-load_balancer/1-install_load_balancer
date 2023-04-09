@@ -20,4 +20,4 @@ sudo chmod a+wr /etc/haproxy/
 
 echo $'frontend front\n\tbind *:80\n\tdefault_backend back\n\n\nbackend back\n\tserver s1 100.26.162.55:80 check\n\tserver s2 35.153.19.3:80 check\n'>>/etc/haproxy/haproxy.cfg
 
-sudo systemctl restart haproxy
+sudo service haproxy restart
