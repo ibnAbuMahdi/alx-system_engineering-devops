@@ -3,8 +3,9 @@
 
 sudo chmod a+w /etc/nginx/sites-enabled/ &&\
 sudo chmod a+w /etc/nginx/sites-enabled/default
+sudo chmod a+w /etc/nginx/sites-available/default
 sudo chmod a+w /etc/nginx/sites-available/
-
+sudo sed -i "s/8080/80/g" /etc/nginx/sites-available/default
 sudo sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
 
 
