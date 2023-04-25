@@ -24,7 +24,7 @@ if __name__ == '__main__':
                 user = obj.get('name')
         if user and len(user_todos_objs):
             print('Employee {} is done with \
-tasks ({}/{}):'.format(user, done, len(user_todos_objs)))
+tasks({}/{}):'.format(user, done, len(user_todos_objs)))
             for obj in user_todos_objs:
                 if obj.get('completed'):
                     print('\t {}'.format(obj.get('title')))
