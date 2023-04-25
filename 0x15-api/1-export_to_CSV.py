@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ gather data from API """
 from sys import argv
-import json
+import csv
 import requests
 
 if __name__ == '__main__':
@@ -14,17 +14,19 @@ if __name__ == '__main__':
         for obj in todos_json_data:
             if obj.get('userId') == int(argv[1]):
                 user_todos_objs.append(obj)
-        done = 0
-        for obj in user_todos_objs:
-            if obj.get('completed'):
-                done += 1
         user = None
         for obj in users_json_data:
             if obj.get('id') == int(argv[1]):
-                user = obj.get('name')
+                user = obj.get('username')
+        csv_data = []
         if user and len(user_todos_objs):
-            print('Employee {} is done with\
-                   tasks ({}/{})'.format(user, done, len(user_todos_objs)))
             for obj in user_todos_objs:
-                if obj.get('completed'):
-                    print('\t {}'.format(obj.get('title')))
+                csv_data.append([argv[1], user,
+                                 obj.get('completed'),
+                                 obj.get('title')])
+        with open('{}.csv'.format(argv[1]), mode='w') as csv_file:
+            writer = csv.writer(csv_file, delimiter=',', quotechar='"',
+                                quoting=csv.QUOTE_ALL)
+
+            for data in csv_data:
+                writer.writerow(data)
