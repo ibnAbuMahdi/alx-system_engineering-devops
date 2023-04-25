@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ gather data from API """
-from sys import argv
 import json
 import requests
+from sys import argv
 
 if __name__ == '__main__':
     if len(argv) > 1 and argv[1] and argv[1].isdigit():
@@ -23,8 +23,8 @@ if __name__ == '__main__':
             if obj.get('id') == int(argv[1]):
                 user = obj.get('name')
         if user and len(user_todos_objs):
-            print('Employee {} is done with\
-                   tasks ({}/{})'.format(user, done, len(user_todos_objs)))
+            print('Employee {} is done with \
+tasks ({}/{}):'.format(user, done, len(user_todos_objs)))
             for obj in user_todos_objs:
                 if obj.get('completed'):
                     print('\t {}'.format(obj.get('title')))

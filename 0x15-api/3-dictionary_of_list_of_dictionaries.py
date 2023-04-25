@@ -18,7 +18,7 @@ if __name__ == '__main__':
             if u_id == obj.get('userId'):
                 json_data.append([username, obj.get('title'),
                                   obj.get('completed')])
-        keys = ["task", "completed", "username"]
+        keys = ["username", "task", "completed"]
         dict_list = []
         for vals in json_data:
             dict_list.append(dict(zip(keys, vals)))
