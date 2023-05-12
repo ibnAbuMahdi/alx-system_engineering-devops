@@ -1,7 +1,10 @@
+#!/usr/bin/python3
+""" 100 count """
 import requests
 import re
 
 def count_words(subreddit, word_list, after=None, counts=None):
+    """ count keywords in hot titles """
     if counts is None:
         counts = {}
 
