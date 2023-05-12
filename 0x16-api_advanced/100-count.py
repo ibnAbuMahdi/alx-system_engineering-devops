@@ -17,7 +17,7 @@ def count_words(subreddit, word_list, after=None, counts=None):
 
     response = requests.get(url, headers=headers, params=params)
     if response.status_code != 200:
-        raise ValueError("Request failed")
+            raise ValueError("Request failed")
 
     data = response.json()["data"]
     after = data["after"]
@@ -31,16 +31,13 @@ def count_words(subreddit, word_list, after=None, counts=None):
                     counts[word] += 1
                 else:
                     counts[word] = 1
-
-    if after:
-        count_words(subreddit, word_list, after, counts)
-    else:
+    if not after:
         sorted_counts = sorted(counts.items(), key=lambda x: (-x[1], x[0]))
         for word, count in sorted_counts:
             print("{}: {}".format(word, count))
+        return
+
+    count_words(subreddit, word_list, after, counts)  
 
     if len(counts) == 0:
         return
-
-
-
