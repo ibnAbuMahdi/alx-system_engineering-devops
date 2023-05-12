@@ -6,7 +6,6 @@ import requests
 
 def top_ten(subreddit):
     """ prints top ten hot posts of a subreddit """
-    subreddit = 'python'
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
 
     headers = {'User-Agent': 'my-app/0.0.1'}
