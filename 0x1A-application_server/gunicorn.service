@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn application server for myapp
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/root/AirBnB_clone_v4/web_dynamic
+ExecStart=gunicorn 2-hbnb:app --bind 0.0.0.0:5003 --workers 3 --error-logfile /tmp/airbnb-error.log --access-logfile /tmp/airbnb-access.log
+Restart=on-failure
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+
+for pid in $(pgrep gunicorn)
+do
+  echo "Reloading Gunicorn process with PID $pid"
+  kill -HUP $pid
+done
